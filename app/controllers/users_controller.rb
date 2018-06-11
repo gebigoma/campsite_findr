@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :authorize, only: [:show, :edit, :update, :destroy]
 
   def index
+    @users = User.all
+    @sites = Site.all
   end
 
   def show
@@ -16,6 +18,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to new_session_path
+    else
+      redirect_to new_user_path
     end
   end
 
@@ -26,6 +30,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    # delete current user
+    current_user.destroy
+    # clear the cookie
+    session[:user_id] = nil
+    # redirect to sign up page
+    redirect_to new_user_path
   end
 
   private
