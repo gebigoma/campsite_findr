@@ -1,2 +1,7 @@
 <h1>Sites#index</h1>
-<p>Find me in app/views/sites/index.html.erb</p>
+
+<ul>
+  <% for s in @sites %>
+  <li><%= s.name %></li>
+  <% end %>
+</ul>
