@@ -3,5 +3,5 @@ root 'users#index'
 resources :users
 
 resources :sessions, only: [:new, :create]
-delete '/logout' => 'sessiona#destroy', as: :logout
+delete '/logout' => 'sessions#destroy', as: :logout
 end
