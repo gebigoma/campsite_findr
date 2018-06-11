@@ -2,7 +2,7 @@
 
 <ul>
   <% for u in @users %>
-  <li><%= u.name %></li>
+  <li><%= link_to "#{u.name}", user_path(u) %></li>
   <% end %>
 </ul>
 

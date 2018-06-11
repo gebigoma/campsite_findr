@@ -1,2 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2><%= @user.name %></h2>
+<h2><%= @user.email %></h2>
+
+<ul>
+  <% for site in @user.sites %>
+    <li><%= link_to "#{site.name}", site_path(site) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Delete Account", user_path(current_user.id), method: 'delete' %>
