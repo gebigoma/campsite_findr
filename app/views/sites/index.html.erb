@@ -2,6 +2,6 @@
 
 <ul>
   <% for s in @sites %>
-  <li><%= s.name %></li>
+    <li><%= link_to "#{s.name}", site_path(s)  %></li>
   <% end %>
 </ul>
