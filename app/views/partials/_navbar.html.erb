@@ -9,6 +9,9 @@
       <li class="nav-item">
         <%= link_to 'Home', root_path, class: 'nav-link' %>
       </li>
+      <li class="nav-item"> 
+        <%= link_to 'Submit Campground', new_site_path, class: 'nav-link' %>
+      </li>
       <% if logged_in? %>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Logged In As: <%= current_user.name %> </a>

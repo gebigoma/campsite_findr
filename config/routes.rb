@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-root 'users#index'
+root 'sites#index'
 resources :users
 resources :sites
 
