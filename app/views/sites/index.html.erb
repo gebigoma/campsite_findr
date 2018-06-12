@@ -4,7 +4,7 @@
       <div class="carousel-item <%= 'active' if i == 0 %>">
         <img class="d-block w-100" src="<%= s.image %>" alt="Site slider images" style="width: 100% !important; max-height: 750px;" >
         <div class="carousel-caption d-md-block">
-          <h5><%= link_to "#{s.name}", site_path(s) %></h5>
+          <h5><%= link_to "#{s.name}", site_path(s), class: "btn btn-outline-light btn-lg" %></h5>
           <p><%= s.description %></p>
         </div>
       </div>

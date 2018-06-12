@@ -12,6 +12,9 @@
       <li class="nav-item"> 
         <%= link_to 'Submit Campground', new_site_path, class: 'nav-link' %>
       </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
       <% if logged_in? %>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Logged In As: <%= current_user.name %> </a>
@@ -30,6 +33,7 @@
           <%= link_to 'Sign In', new_session_path, class: 'nav-link' %>
         </li>
       <% end %>
+    </ul>
       <!-- DROPDOWN 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
