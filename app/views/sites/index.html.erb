@@ -1,7 +1,73 @@
-<h1>Sites#index</h1>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner carousel-image" >
+    <% @sites.sample(3).each_with_index do |s, i| %>
+      <div class="carousel-item <%= 'active' if i == 0 %>">
+        <img class="d-block w-100" src="<%= s.image %>" alt="Site slider images" style="width: 100% !important; max-height: 750px;" >
+        <div class="carousel-caption d-md-block">
+          <h5><%= link_to "#{s.name}", site_path(s) %></h5>
+          <p><%= s.description %></p>
+        </div>
+      </div>
+    <% end %>
+    <!-- 
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://images.unsplash.com/photo-1471115853179-bb1d604434e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d1c8cc988efddbda8746281871c0c8bf&auto=format&fit=crop&w=1259&q=80 " alt="First slide" style="width:700px;height:700px;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Here's the title</h5>
+        <p>And some text</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://images.unsplash.com/photo-1496947850313-7743325fa58c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8f0bb0006c15a626dab0a5025e7838fa&auto=format&fit=crop&w=1050&q=80" alt="Second slide" style="width:800px;height:700px;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Here's the title</h5>
+        <p>And some text</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://images.unsplash.com/photo-1455496231601-e6195da1f841?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4d1156d3e4dfafbc71a9f293939f3243&auto=format&fit=crop&w=1095&q=80" alt="Third slide" style="width:800px;height:700px;">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Here's the title</h5>
+        <p>And some text</p>
+      </div>
+    </div>
+    -->
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
-<ul>
+<nav class="sticky-top">
+<%= render 'partials/navbar' %>
+</nav>
+</br>
+
+
+
+<div class="container">
   <% for s in @sites %>
-    <li><%= link_to "#{s.name}", site_path(s)  %></li>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card flex-md-row mb-4 box-shadow h-md-300" >
+          <img style="max-width: 550px; max-height: 350px;" src="<%= s.image %>">
+          <!-- <img class="card-img-left flex-auto d-lg-block" data-src="holder.js/600x300?theme=thumb" alt="Thumbnail [500x300]" style="max-width: 550px; width: 100%" src= "<%= s.image %>" data-holder-rendered="true"> -->
+          <div class="card-body">
+            <h3 class="card-title"><%= s.name.truncate(30) %></h3>
+            <div class="text-muted"><%= s.location %></div>
+            <div><%= link_to "See details", site_path(s) %></div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+
+<!--  <ul>
+ <li><%= link_to "#{s.name}", site_path(s)  %></li> </ul> -->
+
