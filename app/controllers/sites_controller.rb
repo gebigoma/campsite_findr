@@ -27,15 +27,19 @@ class SitesController < ApplicationController
   end
 
   def edit
+    @site = Site.find(params[:id])
   end
 
   def update
+    @site = Site.find(params[:id])
+    @site.update(site_params)
+    redirect_to site_path(@site)
   end
 
   def destroy
     @site = Site.find(params[:id])
     @site.destroy
-    redirect_to site_path
+    redirect_to root_path
   end
 
   private 
