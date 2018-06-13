@@ -1,13 +1,33 @@
 <!-- SITE INFO-->
-<h2><%= @site.name %></h2>
-<h2><%= @site.location %></h2>
-<h2><%= @site.description %></h2>
-<%= image_tag @site.image, :width => "600px" %>
-<h3>Submitted by: <%= @site.user.name %></h3>
+<br>
+<div class="container">
+
+<div class="card" style="width: 65rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @site.name %></h5>
+    <p class="card-text"><%= @site.location %></p>
+    <p class="card-text"><%= @site.description %></p>
+    <p class="card-text">Submitted by: <%= @site.user.name %></h3></p>
+  </div>
+    <img class="card-img-bottom" src="<%= @site.image %>" alt="Card image cap">
+</div>
 
 <!-- @site.reviews because the reviews route is nested in site -->
+<!-- display reviews on site show page -->
 <% for review in @site.reviews  %>
-    <li><%= review.body %> <%= review.rating %></li>
+<div class="card">
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>
+        <%= review.body %>
+        <span class="rating-star"><% review.rating.to_i.times do %>
+          <i class="fa fa-star"></i>
+        <% end %></span>
+      </p>
+      <footer class="blockquote-footer">Written by: <cite title="Source Title"><%= review.user.name %></cite>  <%= time_ago_in_words(review.created_at)%> ago</footer>
+    </blockquote>
+  </div>
+</div>
 <% end %>
 
 <% if logged_in? %>
@@ -24,7 +44,7 @@
 
       <div class="form-group">
         <%= f.label :rating, 'Rating*' %>
-        <%= f.text_field :rating, class: 'form-control' %>
+        <%= f.select :rating, [1, 2, 3, 4, 5], class: 'form-control' %>
       </div>
 
       <%= f.submit 'Submit', class: 'btn btn-primary' %>
@@ -41,3 +61,5 @@
 <%= link_to 'Edit', edit_site_path(@site) %>
 <%= link_to 'Delete', site_path(@site), method: "delete" %>
 <% end %>
+
+</div>

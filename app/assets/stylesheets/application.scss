@@ -1,14 +1,22 @@
 @import "bootstrap";
+@import "font-awesome";
 
-.carousel-image {
-  background-image: fixed
+body {
+  background-color: rgb(239, 244, 246);
 }
 
-// .carousel-inner > .item > img {
-//   margin: 0 auto !important;
-// }
-
+.navbar {
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(56,56,56,1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(56,56,56,1);
+  box-shadow: 0px 2px 5px 0px rgba(56,56,56,1);}
 
 .container-fluid {
   padding: 0;
+}
+.page-layout {
+  margin: 50px 0px;
+}
+
+.rating-star {
+  color: rgb(255, 204, 0);
 }

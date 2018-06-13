@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Campsite Findr</title>
+    <title>CampsiteFindr</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <!-- SHOW NAV UNDER CAROUSEL FOR ROOT ONLY -->
     <% unless current_page?(root_path) %>
     <nav class="sticky-top">
       <%= render 'partials/navbar' %>
@@ -17,8 +17,6 @@
     <% end %>
     
     <div class="container-fluid">
-
-    <!-- RENDER FLASH -->
     <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>">
           <%= value %>
