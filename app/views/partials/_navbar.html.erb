@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="/">Campsite Findr</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,12 +12,15 @@
       <li class="nav-item"> 
         <%= link_to 'Submit Campground', new_site_path, class: 'nav-link' %>
       </li>
+      <li class="nav-item"> 
+        <%= link_to 'Reviews', reviews_path, class: 'nav-link' %>
+      </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
       <% if logged_in? %>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Logged In As: <%= current_user.name %> </a>
+          <a class="nav-link disabled">Logged In As: <%= current_user.name %> </a>
         </li>
       <li class="nav-item">
         <%= link_to 'Profile', user_path(current_user.id), class: 'nav-link' %>

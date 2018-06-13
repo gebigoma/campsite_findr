@@ -1,8 +1,42 @@
+<!-- SITE INFO-->
 <h2><%= @site.name %></h2>
 <h2><%= @site.location %></h2>
 <h2><%= @site.description %></h2>
 <%= image_tag @site.image, :width => "600px" %>
+<h3>Submitted by: <%= @site.user.name %></h3>
 
+<!-- @site.reviews because the reviews route is nested in site -->
+<% for review in @site.reviews  %>
+    <li><%= review.body %> <%= review.rating %></li>
+<% end %>
+
+<% if logged_in? %>
+<!-- REVIEW FORM -->
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h1>Leave A Review</h1>
+    <!-- call form from site and review since reviews create is nested in sites route -->
+    <%= form_for [@site, @review] do |f| %>  
+      <div class="form-group">
+        <%= f.label :body, 'Write your review*' %>
+        <%= f.text_field :body, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :rating, 'Rating*' %>
+        <%= f.text_field :rating, class: 'form-control' %>
+      </div>
+
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+<% else %>
+  <!-- concatenate log in form and site id from url -->
+  <h3>Please <%= link_to "log in", "#{new_session_path}?site_id=#{@site.id}" %> to leave a review</h3>
+<% end %>
+
+<!--PUT & DELETE SITE-->
 <% if @site.user == current_user %>
 <%= link_to 'Edit', edit_site_path(@site) %>
 <%= link_to 'Delete', site_path(@site), method: "delete" %>

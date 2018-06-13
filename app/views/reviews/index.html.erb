@@ -1,0 +1,7 @@
+<h1>Reviews#index</h1>
+
+<ul>
+<% for r in @reviews %>
+  <li><%= r.body %> <%= r.rating %></li>
+<% end %>
+</ul>

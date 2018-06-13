@@ -1,23 +1,22 @@
 class SitesController < ApplicationController
+  # run new action before authorize action
+  before_action :authorize, only: [:new]
+
   def index
     @sites = Site.all
   end
 
   def show
     @site = Site.find(params[:id])
+    @review = Review.new
   end
 
   def new
-    if current_user
-      @site = Site.new
-    else
-      flash[:danger] = 'You must be logged in to submit a campground'
-
-      redirect_to new_session_path 
-    end
+    @site = Site.new
   end
 
   def create
+    # set site variable as current user
     @site = current_user.sites.new(site_params)
     if @site.save
       redirect_to site_path(@site)

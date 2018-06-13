@@ -10,7 +10,13 @@ class ApplicationController < ActionController::Base
   end
     
   def authorize
-    redirect_to new_session_path unless logged_in?
+    unless logged_in?
+      # if the user is not logged in store that url they came from in a cookie
+      session[:referer] = request.referer
+      # display a flash message 
+      flash[:danger] = 'You must be logged in to access that.'
+      redirect_to new_session_path
+    end
   end
 end
 
