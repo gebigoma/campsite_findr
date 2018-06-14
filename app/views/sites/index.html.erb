@@ -31,7 +31,7 @@
             <h3 class="card-title"><%= s.name.truncate(30) %></h3>
             <div class="text-muted"><%= s.location %></div>
             <div><%= link_to "See details", site_path(s) %></div>
-            <div class="text-muted">Created <%= time_ago_in_words(s.created_at)%> ago</div>
+            <div class="text-muted created-at-position smaller-font italic">Created <%= time_ago_in_words(s.created_at)%> ago</div>
           </div>
         </div>
       </div>
