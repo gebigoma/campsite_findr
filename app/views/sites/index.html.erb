@@ -31,6 +31,22 @@
             <h3 class="card-title"><%= s.name.truncate(30) %></h3>
             <div class="text-muted"><%= s.location %></div>
             <div><%= link_to "See details", site_path(s) %></div>
+            <% if s.reviews.last %>
+              <p><%= s.reviews.last.body %></p>
+                <span class="rating-star">
+                  <% s.reviews.last.rating.to_i.times do %>
+                    <i class="fa fa-star"></i>
+                  <% end %> 
+                </span>
+
+                <% empty_stars = 5 - s.reviews.last.rating.to_i %>
+                <% if empty_stars > 0 %>
+                  <% empty_stars.to_i.times do %>
+                      <i class="fa fa-star"></i>
+                  <% end %>
+                <% end %>
+              
+            <% end %>
             <div class="text-muted created-at-position smaller-font italic">Created <%= time_ago_in_words(s.created_at)%> ago</div>
           </div>
         </div>
