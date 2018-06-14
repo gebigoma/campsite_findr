@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <h1>Sign Up</h1>
+    <h3 class="comfortaa-font">Sign Up</h3>
     <%= form_for @user do |f| %>  
       <div class="form-group">
         <%= f.label :name, 'Name*' %>
@@ -22,7 +22,7 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
 
-      <%= f.submit 'Create Account', class: 'btn btn-primary' %>
+      <%= f.submit 'Create Account', class: 'btn btn-secondary' %>
     <% end %>
   </div>
 </div>

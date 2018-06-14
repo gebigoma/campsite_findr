@@ -1,6 +1,6 @@
 <br>
 <div class="card border-light mb-3" style="max-width: 65rem;">
-  <div class="card-header"><h5><%= @user.name %>'s Profile</h5></div>
+  <div class="card-header"><h2 class="comfortaa-font"><%= @user.name %>'s Profile</h2></div>
   <div class="card-body">
     <p class="card-title">Username: <%= @user.name %></p>
     <p class="card-text">Email: <%= @user.email %></p>
@@ -9,13 +9,13 @@
   <% for s in @user.sites %>
     <div class="row">
       <div class="col-md-12">
-        <div class="card flex-md-row mb-4 box-shadow h-md-300" >
+        <div class="card flex-md-row mb-4 box-shadow h-md-300 show-border" >
           <img style="max-width: 550px; max-height: 350px;" src="<%= s.image %>">
           <div class="card-body">
             <h3 class="card-title"><%= s.name.truncate(30) %></h3>
             <div class="text-muted"><%= s.location %></div>
             <div><%= link_to "See details", site_path(s) %></div>
-            <div class="text-muted">Created <%= time_ago_in_words(s.created_at)%> ago</div>
+            <div class="text-muted created-at-position smaller-font italic">Created <%= time_ago_in_words(s.created_at)%> ago</div>
           </div>
         </div>
       </div>

@@ -3,19 +3,22 @@
 
 body {
   background-color: rgb(239, 244, 246);
+  font-family: 'Open Sans', sans-serif;
+
 }
 
 .container {
   margin-top: 30px;
 }
 
-.navbar {
+.navbar, .comfortaa-font{
   font-family: 'Comfortaa', cursive;
 }
 
-footer {
+.footer {
   bottom: 0px;
 }
+
 .smaller-font {
   font-size: 14px;
 }
@@ -45,4 +48,8 @@ footer {
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+.show-border {
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
