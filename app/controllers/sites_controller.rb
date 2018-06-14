@@ -3,7 +3,8 @@ class SitesController < ApplicationController
   before_action :authorize, only: [:new]
 
   def index
-    @sites = Site.all
+    @sites = Site.order('created_at DESC')
+    @review = Review.new
   end
 
   def show
