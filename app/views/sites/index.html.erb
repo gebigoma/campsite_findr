@@ -3,7 +3,7 @@
   <div class="carousel-inner carousel-image" >
     <% @sites.sample(3).each_with_index do |s, i| %>
       <div class="carousel-item <%= 'active' if i == 0 %>">
-        <img class="d-block w-100" src="<%= s.image %>" alt="Site slider images" style="width: 100% !important; max-height: 750px;" >
+        <img class="d-block w-100" src="<%= s.image %>" alt="Site slider images" style="width: 100% !important; max-height: 650px;" >
         <div class="carousel-caption d-md-block">
           <h5><%= link_to "#{s.name}", site_path(s), class: "btn btn-outline-light btn-lg" %></h5>
           <p><%= s.description %></p>
@@ -21,23 +21,17 @@
   </a>
 </div>
 
-<!-- NAV -->
-<nav class="sticky-top">
-<%= render 'partials/navbar' %>
-</nav>
-</br>
-
-
 <div class="container">
   <% for s in @sites %>
     <div class="row">
       <div class="col-md-12">
-        <div class="card flex-md-row mb-4 box-shadow h-md-300" >
+        <div class="card flex-md-row mb-4 box-shadow h-md-300">
           <img style="max-width: 550px; max-height: 350px;" src="<%= s.image %>">
           <div class="card-body">
             <h3 class="card-title"><%= s.name.truncate(30) %></h3>
             <div class="text-muted"><%= s.location %></div>
             <div><%= link_to "See details", site_path(s) %></div>
+            <div class="text-muted">Created <%= time_ago_in_words(s.created_at)%> ago</div>
           </div>
         </div>
       </div>
@@ -45,6 +39,4 @@
   <% end %>
 </div>
 
-<!--  <ul>
- <li><%= link_to "#{s.name}", site_path(s)  %></li> </ul> -->
 

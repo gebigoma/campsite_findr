@@ -7,23 +7,29 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Baloo|Poor+Story" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
   </head>
 
   <body>
-    <% unless current_page?(root_path) %>
+
     <nav class="sticky-top">
       <%= render 'partials/navbar' %>
     </nav>
-    <% end %>
-    
-    <div class="container-fluid">
-    <% flash.each do |key, value| %>
+
+    <div class="container">
+      <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>">
           <%= value %>
         </div>
       <% end %> 
-
       <%= yield %>
     </div>
+
   </body>
+      <footer>
+      <%= render 'partials/footer' %>
+    </footer>
+
 </html>

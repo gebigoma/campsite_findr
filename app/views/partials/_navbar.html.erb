@@ -1,26 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: rgb(88, 110, 116) !important;">
-  <a class="navbar-brand" href="/">Campsite Findr</a>
+  <a class="navbar-brand main-logo" href="/">Campsite Findr</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <%= link_to 'Home', root_path, class: 'nav-link' %>
-      </li>
       <li class="nav-item"> 
-        <%= link_to 'Submit Campground', new_site_path, class: 'nav-link' %>
+        <%= link_to 'Submit', new_site_path, class: 'nav-link' %>
       </li>
       <li class="nav-item"> 
         <%= link_to 'Reviews', reviews_path, class: 'nav-link' %>
       </li>
     </ul>
 
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto smaller-font">
       <% if logged_in? %>
         <li class="nav-item">
-          <a class="nav-link disabled">Logged In As: <%= current_user.name %> </a>
+          <a class="nav-link disabled italic">Logged In As: <%= current_user.name %> </a>
         </li>
       <li class="nav-item">
         <%= link_to 'Profile', user_path(current_user.id), class: 'nav-link' %>

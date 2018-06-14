@@ -5,18 +5,38 @@ body {
   background-color: rgb(239, 244, 246);
 }
 
+.container {
+  margin-top: 30px;
+}
+
+navbar {
+  font-family: 'Comfortaa', cursive;
+}
+
+footer {
+  bottom: 0;
+}
+.smaller-font {
+  font-size: 14px;
+}
+
+.italic {
+  font-style: italic;
+}
+
 .navbar {
   -webkit-box-shadow: 0px 2px 5px 0px rgba(56,56,56,1);
   -moz-box-shadow: 0px 2px 5px 0px rgba(56,56,56,1);
   box-shadow: 0px 2px 5px 0px rgba(56,56,56,1);}
 
-.container-fluid {
-  padding: 0;
-}
 .page-layout {
   margin: 50px 0px;
 }
 
 .rating-star {
   color: rgb(255, 204, 0);
+}
+
+.card {
+  border: 0;
 }

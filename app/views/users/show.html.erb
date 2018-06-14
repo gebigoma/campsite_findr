@@ -1,10 +1,28 @@
-<h2><%= @user.name %></h2>
-<h2><%= @user.email %></h2>
-
-<ul>
-  <% for site in @user.sites %>
-    <li><%= link_to "#{site.name}", site_path(site) %></li>
+<br>
+<div class="card border-light mb-3" style="max-width: 65rem;">
+  <div class="card-header"><h5><%= @user.name %>'s Profile</h5></div>
+  <div class="card-body">
+    <p class="card-title">Username: <%= @user.name %></p>
+    <p class="card-text">Email: <%= @user.email %></p>
+    <br>
+    <div class="container">
+  <% for s in @user.sites %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card flex-md-row mb-4 box-shadow h-md-300" >
+          <img style="max-width: 550px; max-height: 350px;" src="<%= s.image %>">
+          <div class="card-body">
+            <h3 class="card-title"><%= s.name.truncate(30) %></h3>
+            <div class="text-muted"><%= s.location %></div>
+            <div><%= link_to "See details", site_path(s) %></div>
+            <div class="text-muted">Created <%= time_ago_in_words(s.created_at)%> ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+    <p><%= link_to "Delete Account", user_path(current_user.id), method: 'delete' %></p>
+  </div>
+</div>
 
-<%= link_to "Delete Account", user_path(current_user.id), method: 'delete' %>
