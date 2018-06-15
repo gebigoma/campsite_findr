@@ -36,7 +36,7 @@
                 <!-- display reviews on site index card -->
                 <% if s.reviews.last %>
                 <hr>
-                  <div class="card-body">
+                  <div class="card-body review-body">
                         <blockquote class="blockquote mb-0 review-site">
                         <p>
                         <span class="rating-star">
@@ -52,13 +52,13 @@
                         <% end %>
                       <% end %>
                       </span>
-                      <%= s.reviews.last.body %>
+                      <%= s.reviews.last.body.truncate(100) %>
                       </p>
                       <footer class="blockquote-footer">Written by: <cite title="Source Title"><%= s.reviews.last.user.name %></cite>  <%= time_ago_in_words(s.reviews.last.created_at)%> ago</footer>
                       </blockquote>
                   </div>
                 <% end %>
-                <div class="text-muted created-at-position smaller-font italic">Submitted by: <%= s.user.name %></div>
+                <!-- <div class="text-muted created-at-position smaller-font italic">Submitted by: <%= s.user.name %></div> -->
               </div>
             </div>
           </div>
