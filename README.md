@@ -49,7 +49,7 @@ This is a crowd-sourced app built to share campsites from all over the world. On
 ## ERD (entity relationship diagram)
 ![Screenshot_6](https://i.imgur.com/hUvVM1y.png?1 "Screenshot_6")
 
-##Issues Faced
+## Issues Faced
 
 * My main issue was getting all my redirects to work properly. I had to set specific methods to request the  destination url, the referrer, save cookie sessions, delete the cookie after, render a page, etc. It was very confusing.
 
