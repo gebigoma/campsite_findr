@@ -13,12 +13,20 @@
 <!-- display reviews on site show page -->
 <% for review in @site.reviews  %>
   <div class="card-body">
-    <blockquote class="blockquote mb-0">
+    <blockquote class="blockquote mb-0 body-font">
       <p>
         <%= review.body %>
         <span class="rating-star"><% review.rating.to_i.times do %>
           <i class="fa fa-star"></i>
         <% end %></span>
+        <span class="empty-star">
+        <% empty_stars = 5 - review.rating.to_i %>
+        <% if empty_stars > 0 %>
+          <% empty_stars.to_i.times do %>
+              <i class="fa fa-star"></i>
+          <% end %>
+        <% end %>
+        </span>
       </p>
       <footer class="blockquote-footer">Written by: <cite title="Source Title"><%= review.user.name %></cite>  <%= time_ago_in_words(review.created_at)%> ago</footer>
     </blockquote>
@@ -31,18 +39,18 @@
 <div class="card-body">
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <h1>Leave A Review</h1>
+    <h3 class="comfortaa-font">Leave A Review</h3>
     <!-- call form from site and review since reviews create is nested in sites route -->
     <%= form_for [@site, @review] do |f| %>  
       <div class="form-group">
         <%= f.label :body, 'Write your review*' %>
-        <%= f.text_field :body, class: 'form-control' %>
+        <%= f.text_area :body, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= f.label :rating, 'Rating*' %>
         <%= f.select :rating, [ 1, 2, 3, 4, 5], class: 'form-control' %>
       </div>
-        <%= f.submit 'Submit', class: 'btn btn-primary' %>
+        <%= f.submit 'Submit', class: 'btn btn-secondary' %>
     <% end %>
   </div>
 </div>
@@ -50,8 +58,10 @@
 </div>
 <% else %>
   <!-- concatenate log in form and site id from url -->
-  <h3>Please <%= link_to "log in", "#{new_session_path}?site_id=#{@site.id}" %> to leave a review</h3>
+  <div class="container">
+  <p class="comfortaa-font text-center">Please <%= link_to "log in", "#{new_session_path}?site_id=#{@site.id}" %> to leave a review</p>
 <% end %>
+</div>
 
 <div>
 <!--PUT & DELETE SITE-->

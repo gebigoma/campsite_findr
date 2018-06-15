@@ -22,37 +22,69 @@
 </div>
 
 <div class="container">
-  <% for s in @sites %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card flex-md-row mb-4 box-shadow h-md-300">
-          <img style="max-width: 550px; max-height: 350px;" src="<%= s.image %>">
-          <div class="card-body">
-            <h3 class="card-title"><%= s.name.truncate(30) %></h3>
-            <div class="text-muted"><%= s.location %></div>
-            <div><%= link_to "See details", site_path(s) %></div>
-            <% if s.reviews.last %>
-              <p><%= s.reviews.last.body %></p>
-                <span class="rating-star">
-                  <% s.reviews.last.rating.to_i.times do %>
-                    <i class="fa fa-star"></i>
-                  <% end %> 
-                </span>
-
-                <% empty_stars = 5 - s.reviews.last.rating.to_i %>
-                <% if empty_stars > 0 %>
-                  <% empty_stars.to_i.times do %>
-                      <i class="fa fa-star"></i>
-                  <% end %>
+  <div class="row">
+    <div class="col-md-9">
+      <% for s in @sites %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card flex-md-row mb-4 box-shadow h-md-300">
+              <img style="max-width: 550px; max-height: 350px;" src="<%= s.image %>">
+              <div class="card-body">
+                <h3 class="card-title"><%= s.name.truncate(30) %></h3>
+                <div class="text-muted"><%= s.location %></div>
+                <div><%= link_to "See details", site_path(s) %></div>
+                <!-- display reviews on site index card -->
+                <% if s.reviews.last %>
+                <hr>
+                  <div class="card-body">
+                        <blockquote class="blockquote mb-0 review-site">
+                        <p>
+                        <span class="rating-star">
+                        <% s.reviews.last.rating.to_i.times do %>
+                        <i class="fa fa-star"></i>
+                        <% end %> 
+                      </span>
+                      <span class="empty-star">
+                      <% empty_stars = 5 - s.reviews.last.rating.to_i %>
+                      <% if empty_stars > 0 %>
+                        <% empty_stars.to_i.times do %>
+                            <i class="fa fa-star"></i>
+                        <% end %>
+                      <% end %>
+                      </span>
+                      <%= s.reviews.last.body %>
+                      </p>
+                      <footer class="blockquote-footer">Written by: <cite title="Source Title"><%= s.reviews.last.user.name %></cite>  <%= time_ago_in_words(s.reviews.last.created_at)%> ago</footer>
+                      </blockquote>
+                  </div>
                 <% end %>
-              
-            <% end %>
-            <div class="text-muted created-at-position smaller-font italic">Created <%= time_ago_in_words(s.created_at)%> ago</div>
+                <div class="text-muted created-at-position smaller-font italic">Submitted by: <%= s.user.name %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card bg-light">
+            <div class="card-header">Top 5 Campsites</div>
+              <div class="card-body">
+                <% for s in @top_five %>
+                  <p class="card-text">
+                    <span class="rating-star"><% s.reviews.average(:rating).round.times do %>
+                      <i class="fa fa-star"></i>
+                    <% end %></span></p>
+                    <p><%= link_to "#{s.name.truncate(30)}", site_path(s) %></p>
+                    <hr>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  <% end %>
-</div>
+
 
 

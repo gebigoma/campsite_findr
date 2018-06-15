@@ -4,6 +4,7 @@ class SitesController < ApplicationController
 
   def index
     @sites = Site.order('created_at DESC')
+    @top_five = Site.joins(:reviews).group('sites.id').order('avg(reviews.rating) desc').first(5)
     @review = Review.new
   end
 
