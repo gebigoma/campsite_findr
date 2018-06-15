@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     # if there is a site id in the url
     if params[:site_id]
     # store the url in the cookies
-      session[:referer] = request.referer
+      session[:authorized_destination] = request.referer
     end
   end
 
@@ -14,11 +14,11 @@ class SessionsController < ApplicationController
 
       flash[:success] = "Welcome, #{@user.name}!"
       # if there is a url the user previously came from, store it in the cookie
-      if session[:referer]
+      if session[:authorized_destination]
       # and redirect them back to that url store in the cookie
-        redirect_to session[:referer]
+        redirect_to session[:authorized_destination]
       # then delete that cookie
-        session[:referer] = nil
+        session[:authorized_destination] = nil
       else
         redirect_to user_path(@user)
       end
