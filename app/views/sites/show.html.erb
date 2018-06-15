@@ -1,11 +1,18 @@
 <!-- SITE INFO-->
 
-<div class="card" style="max-width: 65rem;">
+<div class="card mx-auto" style="max-width: 55rem;">
   <div class="card-body">
     <h5 class="card-title"><%= @site.name %></h5>
     <p class="card-text">Location: <%= @site.location %></p>
     <p class="card-text">Details: <%= @site.description %></p>
-    <p class="card-text italic smaller-font">Submitted by: <%= @site.user.name %></h3></p>
+    <p class="card-text smaller-font">Submitted by: 
+      <span class="italic"><%= @site.user.name %></span>
+      <% if @site.user == current_user %> &nbsp;&nbsp;&nbsp;
+      <%= link_to 'Edit', edit_site_path(@site) %>
+      <%= link_to 'Delete', site_path(@site), method: "delete" %>
+      <% end %>
+    </p>
+    
     <img class="card-img-bottom" src="<%= @site.image %>" alt="Card image cap">
 
 
@@ -63,13 +70,6 @@
 <% end %>
 </div>
 
-<div>
-<!--PUT & DELETE SITE-->
-<% if @site.user == current_user %>
-<%= link_to 'Edit', edit_site_path(@site) %>
-<%= link_to 'Delete', site_path(@site), method: "delete" %>
-<% end %>
-</div>
 </div>
 </div>
 <br>

@@ -57,6 +57,7 @@ This is a crowd-sourced app built to share campsites from all over the world. On
 
 ## Backlog
 
+* Fix the footer; does not fix to bottom on pages with less content. 
 * When a user signs up, instead of redirecting to the login page, I would like to the user to be logged in automatically when they sign up and be redirected to their profile page. 
 * Add an edit button in the user's profile. 
 * Add search capability in the nav bar. 
