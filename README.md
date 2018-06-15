@@ -1,6 +1,6 @@
 # Project 2 - Campsite Findr
 ---
-[Link to Campsite_Findr](https://enigmatic-ridge-61588.herokuapp.com/users/1)
+[Link to Campsite Findr](https://enigmatic-ridge-61588.herokuapp.com/users/1)
 
 URL: <https://enigmatic-ridge-61588.herokuapp.com/>
 
