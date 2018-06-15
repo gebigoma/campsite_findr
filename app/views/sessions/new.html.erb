@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <h3 class="comfortaa-font">Log In</h3>
+    <p>Don't have an account? <%=  link_to 'Register here.', new_user_path %> </p>
     <%= form_tag sessions_path do %>  
       <div class="form-group">
         <%= label_tag :email, 'Email' %>
