@@ -6,11 +6,11 @@
     <p class="card-text">Email: <%= @user.email %></p>
     <br>
     <div class="container">
-  <% for s in @user.sites %>
+  <% for s in @user.sites.order('created_at DESC') %>
     <div class="row">
       <div class="col-md-12">
         <div class="card flex-md-row mb-4 box-shadow h-md-300 show-border" >
-          <img style="max-width: 550px; max-height: 350px;" src="<%= s.image %>">
+          <img style="max-width: 500px; max-height: 350px;" src="<%= s.image %>">
           <div class="card-body">
             <h3 class="card-title"><%= s.name.truncate(30) %></h3>
             <div class="text-muted"><%= s.location %></div>
