@@ -1,19 +1,12 @@
 class ReviewsController < ApplicationController
+
   def index
     @reviews = Review.order('created_at DESC')
-  end
-
-  def show
-  end
-
-  def new
   end
 
   # if user is logged in show review form
   # else show flash message with link to log in (later after login redirect to previous page)
   # redirect to show page 
-  # 
-  # 
   def create
     @site = Site.find(params[:site_id])
     @review = Review.new(review_params)
@@ -36,4 +29,5 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:body, :rating)
   end
+
 end
